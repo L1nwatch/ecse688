@@ -1,17 +1,28 @@
 public class Cycle {
-    private final int radius;
-
-    public Cycle(int radius) {
+    public void setRadius(int radius) {
         this.radius = radius;
     }
 
+    public int radius;
+    private boolean allowRun = false;
+
+    boolean isAllowRun() {
+        return allowRun;
+    }
+
+
     public static void main(String[] args) {
-        Cycle c = new Cycle(3);
+        Cycle c = new Cycle();
+        c.radius = 233;
         double result = c.calculateArea();
         System.out.printf("Area = {%s}%n".formatted(result));
     }
 
-    double calculateArea() {
-        return Math.PI * radius * radius;
+    public double calculateArea() {
+        if (isAllowRun()) {
+            return 3.3;
+        } else {
+            return Math.PI * radius * radius;
+        }
     }
 }
