@@ -6,6 +6,13 @@ public class Cycle {
         this.radius = radius;
     }
 
+    public Cycle(double radius) {
+        this.radius = radius;
+    }
+
+    public Cycle() {
+    }
+
     boolean isAllowRun() {
         return allowRun;
     }
