@@ -47,4 +47,29 @@ public class TestCycle {
         double result = testCycle.calculateArea();
         Assertions.assertEquals(expected, result, tolerance);
     }
+
+    @Test
+    public void testCalculateAreaAssertAll() {
+        double testRadius = Math.random() * 100;
+        testCycle.setRadius(testRadius);
+
+        double expected = Math.PI * testRadius * testRadius;
+        double result = testCycle.calculateArea();
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(expected, result, tolerance),
+                () -> Assertions.assertTrue(result > 0)
+        );
+    }
+
+    @Test
+    public void testCalculateAreaAssertThrows() {
+        double testRadius = Math.random() * 100;
+        testCycle.setRadius(testRadius);
+
+        double expected = Math.PI * testRadius * testRadius;
+        double result = testCycle.calculateArea();
+        Assertions.assertEquals(expected, result, tolerance);
+        // example:
+//        Assertions.assertThrows(Exception.class, () -> Assertions.assertTrue(result < 0));
+    }
 }
