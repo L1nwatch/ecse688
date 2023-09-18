@@ -1,10 +1,10 @@
 public class Cycle {
-    public void setRadius(int radius) {
+    public double radius;
+    private boolean allowRun = false;
+
+    public void setRadius(double radius) {
         this.radius = radius;
     }
-
-    public int radius;
-    private boolean allowRun = false;
 
     boolean isAllowRun() {
         return allowRun;

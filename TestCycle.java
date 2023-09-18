@@ -1,7 +1,4 @@
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -34,6 +31,16 @@ public class TestCycle {
     @Test
     public void testCalculateArea() {
         int testRadius = 1;
+        testCycle.setRadius(testRadius);
+
+        double expected = Math.PI * testRadius * testRadius;
+        double result = testCycle.calculateArea();
+        Assertions.assertEquals(expected, result, tolerance);
+    }
+
+    @RepeatedTest(3)
+    public void testCalculateRandomArea() {
+        double testRadius = Math.random() * 100;
         testCycle.setRadius(testRadius);
 
         double expected = Math.PI * testRadius * testRadius;
