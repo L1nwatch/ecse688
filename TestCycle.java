@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.spy;
 
 @RunWith(Theories.class)
 @ExtendWith(MockitoExtension.class)
@@ -35,7 +36,14 @@ public class TestCycle {
     public void testMock() {
         when(testMockCycle.isAllowRun()).thenReturn(true);
         Assertions.assertEquals(true, testMockCycle.isAllowRun());
-//        Assertions.assertEquals(3.3, testMockCycle.calculateArea()); #TODO: not know how to fix it
+//        Assertions.assertEquals(3.3, testMockCycle.calculateArea()); // it would fail because it's a full mock class
+    }
+    @Test
+    public void testSpyMock() {
+        Cycle testMockCycle = spy(testCycle);
+        when(testMockCycle.isAllowRun()).thenReturn(true);
+        Assertions.assertTrue(testMockCycle.isAllowRun());
+        Assertions.assertEquals(3.3, testMockCycle.calculateArea());
     }
 
     @Test
